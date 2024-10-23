@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
  * iOS 사칙연산 계산기 프로그램
  * 
  * @author Suh Jang Ho
- * @version 0.4
+ * @version 0.5
  * 
  * @created 2024.10.23
  * @updated 2024.10.23
@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
  * [0.2] 계산을 했을때 식이 표시되도록 수정, 코드를 북쪽과 중앙으로 나누어 메소드로 분리
  * [0.3] 계산 결과가 정수일 경우 int로 출력, 소수일 경우 double로 출력
  * [0.4] 계산 결과값을 소수점 이하 10자리까지 반올림하여 부동소수점 오차를 해결
+ * [0.5] 버튼 배열을 위해 빈 버튼 추가, Readme.md 파일 작성
  * 
  * @see ChatGPT 부동소수점 오차 해결 참고 
  */
@@ -95,6 +96,8 @@ public class Calculator extends JFrame {
                     display.setText(String.valueOf(result)); // 소수일 경우 double로 출력
                 }
                 num1=result;
+            } else if(command.equals("😎")){
+                // 어떤 이벤트도 발생하지 않음 버튼 배열을 위해 추가
             } else {
                 // 연산자 버튼 클릭 시 연산자 저장 및 디스플레이에 표시
                 num1=Double.parseDouble(display.getText());
@@ -143,6 +146,9 @@ public class Calculator extends JFrame {
             JButton button = new JButton(label);
             button.setFocusable(false);
             button.addActionListener(ButtonListener);
+            if (label.equals("😎")) {
+                button.setEnabled(false);
+            }
             panel.add(button);
         }
         
