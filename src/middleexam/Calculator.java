@@ -38,6 +38,7 @@ import java.awt.event.ActionListener;
         // 버튼 정의 및 패널에 추가
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(5,4,5,5));
+        ButtonListener ButtonListener = new ButtonListener();
 
         String[] buttons ={
             "C","±","%","÷",
@@ -50,7 +51,7 @@ import java.awt.event.ActionListener;
         for(String label : buttons){
             JButton button = new JButton(label);
             button.setFocusable(false);
-            button.addActionListener(null);
+            button.addActionListener(ButtonListener);
             panel.add(button);
         }
 
@@ -59,10 +60,19 @@ import java.awt.event.ActionListener;
     }
 
     // 버튼 클릭 이벤트 처리
-    //@Override
-    //public void actionPerformed(ActionEvent e){  }
+    public class ButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String command = e.getActionCommand();
+
+            if(command.charAt(0)>='0' && command.charAt(0)<='9' || command.equals(".")){
+                // 값이 입력되면 디스플레이에 추가
+                display.setText(display.getText() + command);
+            } 
+        }
+    }
 
     public static void main(String[] args) {
         new Calculator();
     }
- }
+}
