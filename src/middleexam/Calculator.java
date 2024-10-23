@@ -68,7 +68,11 @@ import java.awt.event.ActionListener;
             if(command.charAt(0)>='0' && command.charAt(0)<='9' || command.equals(".")){
                 // 값이 입력되면 디스플레이에 추가
                 display.setText(display.getText() + command);
-            } 
+            } else if (command.equals("C")){
+                // C 버튼 클릭 시 디스플레이 초기화
+                display.setText("");
+                num1 = num2 = result = 0;
+            }
         }
     }
 
