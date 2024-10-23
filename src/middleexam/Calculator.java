@@ -72,6 +72,11 @@ import java.awt.event.ActionListener;
                 // C 버튼 클릭 시 디스플레이 초기화
                 display.setText("");
                 num1 = num2 = result = 0;
+            } else if (command.equals("±")){
+                // ± 버튼 클릭 시 디스플레이의 값이 양수면 음수로, 음수면 양수로 변경
+                double currentValue = Double.parseDouble(display.getText());
+                currentValue *= -1;
+                display.setText(String.valueOf(currentValue));
             }
         }
     }
