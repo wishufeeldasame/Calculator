@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
  * iOS 사칙연산 계산기 프로그램
  * 
  * @author Suh Jang Ho
- * @version 0.2
+ * @version 0.3
  * 
  * @created 2024.10.23
  * @updated 2024.10.23
@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
  * @changelog
  * [0.1] 계산기 프로그램 구현
  * [0.2] 계산을 했을때 식이 표시되도록 수정, 코드를 북쪽과 중앙으로 나누어 메소드로 분리
+ * [0.3] 계산 결과가 정수일 경우 int로 출력, 소수일 경우 double로 출력
  * 
  */
 
@@ -82,7 +83,12 @@ public class Calculator extends JFrame {
                         break;
                 }
                 
-                display.setText(String.valueOf(result));
+                // 결과값이 정수인지 확인하여 출력
+                if (result == (int) result) {
+                    display.setText(String.valueOf((int) result)); // 정수일 경우 int로 출력
+                } else {
+                    display.setText(String.valueOf(result)); // 소수일 경우 double로 출력
+                }
                 num1 = result;
             } else {
                 // 연산자 버튼 클릭 시 연산자 저장 및 디스플레이에 표시
