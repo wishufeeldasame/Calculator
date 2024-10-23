@@ -77,6 +77,33 @@ import java.awt.event.ActionListener;
                 double currentValue = Double.parseDouble(display.getText());
                 currentValue *= -1;
                 display.setText(String.valueOf(currentValue));
+            } else if(command.equals("=")){
+                // = 버튼 클릭 시 계산 수행
+                num2 = Double.parseDouble(display.getText());
+                switch(op){
+                    case "+":
+                        result = num1 + num2;
+                        break;
+                    case "-":
+                        result = num1 - num2;
+                        break;
+                    case "x":
+                        result = num1 * num2;
+                        break;
+                    case "÷":
+                        result = num1 / num2;
+                        break;
+                    case "%":
+                        result = num1 % num2;
+                        break;
+                }
+                display.setText(String.valueOf(result));
+                num1 = result;
+            } else {
+                // 연산자 버튼 클릭 시 연산자 저장
+                num1 = Double.parseDouble(display.getText());
+                op = command;
+                display.setText("");
             }
         }
     }
